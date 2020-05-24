@@ -32,15 +32,12 @@ def changeAddress():
     	subprocess.run(["ifconfig", interface.get(), "up"])
     	if (x.returncode == 0):
         	banner = ttk.Label(win, text="[+] Changing Mac Address for " + interface.get() + " to " + mac_address.get() + "").grid(column=0, row=2, columnspan=2)
-        	banner.pack()
    	 
     	else:
         	banner = ttk.Label(win, text="The Mac Address entered was not acceptable").grid(column=0, row=2, columnspan=2)
-        	banner.pack()
 	else:
     	banner = ttk.Label(win, text="The Mac Address entered was not acceptable").grid(column=0, row=2, columnspan=2)
-    	banner.pack()
-
+	
 def onselect(evt):
 	result = subprocess.run(["ifconfig", interface.get()], capture_output=True)
 	current_mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", str(result.stdout))
